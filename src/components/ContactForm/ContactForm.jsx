@@ -6,9 +6,7 @@ import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 
 import styles from './ContactForm.module.css';
-import { addContact } from '../../redux/contactsOps';
-
-// import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contacts/operations';
 
 const ContactForm = () => {
   const dataValidationSchema = Yup.object().shape({

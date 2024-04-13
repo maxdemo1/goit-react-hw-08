@@ -1,0 +1,14 @@
+.navLink {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: transform 200ms ease-in-out;
+}
+
+.navLink:hover {
+    transform: scale(1.05);
+}
+
+.activeLink {
+    color: #9f0303;
+}

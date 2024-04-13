@@ -1,39 +1,63 @@
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import SearchBox from './components/SearchBox/SearchBox';
-import styles from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from './redux/contactsOps';
+import { useDispatch } from 'react-redux';
+import { Suspense, useEffect } from 'react';
+
 import Loader from './components/Loader/Loader';
-import { errorSelector, loaderSelector } from './redux/selectors';
+
+import styles from './App.module.css';
+
+import { refreshUser } from './redux/auth/operations';
+import Navigation from './components/Navigation/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ContactsPage from './pages/ContactsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Authorization from './components/Authorization/Authorization';
+import Registration from './components/Registration/Registration';
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const loadingState = useSelector(loaderSelector);
-  const errorState = useSelector(errorSelector);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
     <div className={styles.appContainer}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loadingState && <Loader />}
-      {errorState && (
-        <h2
-          style={{
-            marginTop: 50,
-            textAlign: 'center',
-          }}
-        >
-          {errorState}
-        </h2>
-      )}
-      {!loadingState && <ContactList />}
+      <Navigation>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="contacts"
+              element={
+                // <ContactsPage />
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="authorization"
+              element={
+                <RestrictedRoute>
+                  <Authorization />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="registration"
+              element={
+                <RestrictedRoute>
+                  <Registration />
+                </RestrictedRoute>
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </Navigation>
     </div>
   );
 }
