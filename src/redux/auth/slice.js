@@ -56,8 +56,8 @@ const authSlice = createSlice({
         isAnyOf(
           register.rejected,
           login.rejected,
-          logout.fulfilled,
-          refreshUser.rejected
+          refreshUser.rejected,
+          logout.fulfilled
         ),
         () => {
           return INITIAL_STATE;

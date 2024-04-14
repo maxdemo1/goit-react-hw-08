@@ -8,19 +8,19 @@ import { useDispatch } from 'react-redux';
 import styles from './ContactForm.module.css';
 import { addContact } from '../../redux/contacts/operations';
 
-const ContactForm = () => {
-  const dataValidationSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
-    number: Yup.string()
-      .matches(/^\d+$/, 'Phone number is not valid')
-      .required('Required')
-      .min(10, 'Too Short!')
-      .max(10, 'Too Long!'),
-  });
+const dataValidationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  number: Yup.string()
+    .matches(/^\d+$/, 'Phone number is not valid')
+    .required('Required')
+    .min(10, 'Too Short!')
+    .max(10, 'Too Long!'),
+});
 
+const ContactForm = () => {
   const usernameId = useId();
   const phoneNumberId = useId();
 

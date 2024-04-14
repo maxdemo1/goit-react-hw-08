@@ -1,20 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { Suspense, useEffect } from 'react';
-
-import Loader from './components/Loader/Loader';
+import { refreshUser } from './redux/auth/operations';
+import { Route, Routes } from 'react-router-dom';
 
 import styles from './App.module.css';
-
-import { refreshUser } from './redux/auth/operations';
-import Navigation from './components/Navigation/Navigation';
-import { Route, Routes } from 'react-router-dom';
+import Loader from './components/Loader/Loader';
 import HomePage from './pages/HomePage';
 import ContactsPage from './pages/ContactsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import Authorization from './components/Authorization/Authorization';
-import Registration from './components/Registration/Registration';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Layout from './components/Layout/Layout';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +23,7 @@ function App() {
 
   return (
     <div className={styles.appContainer}>
-      <Navigation>
+      <Layout>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -42,7 +40,7 @@ function App() {
               path="authorization"
               element={
                 <RestrictedRoute>
-                  <Authorization />
+                  <LoginPage />
                 </RestrictedRoute>
               }
             />
@@ -50,14 +48,14 @@ function App() {
               path="registration"
               element={
                 <RestrictedRoute>
-                  <Registration />
+                  <RegistrationForm />
                 </RestrictedRoute>
               }
             />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-      </Navigation>
+      </Layout>
     </div>
   );
 }

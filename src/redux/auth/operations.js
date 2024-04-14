@@ -67,5 +67,12 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const token = thunkAPI.getState().auth.token;
+      if (!token) return false;
+      return true;
+    },
   }
 );

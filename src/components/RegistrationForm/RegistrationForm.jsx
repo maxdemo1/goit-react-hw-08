@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import styles from './Registration.module.css';
+import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 
@@ -17,7 +17,7 @@ const dataValidationSchema = Yup.object().shape({
   password: Yup.string(),
 });
 
-const Registration = () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = data => {
@@ -62,4 +62,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default RegistrationForm;

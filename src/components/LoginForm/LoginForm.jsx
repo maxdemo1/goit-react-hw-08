@@ -1,13 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operations';
-import styles from './Authorization.module.css';
+import styles from './LoginForm.module.css';
 import {
   isLoggedInSelector,
   userNameSelector,
 } from '../../redux/auth/selectors';
 
-const Authorization = () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(isLoggedInSelector);
@@ -56,4 +56,4 @@ const Authorization = () => {
   );
 };
 
-export default Authorization;
+export default LoginForm;
