@@ -5,6 +5,7 @@ import SearchBox from '../components/SearchBox/SearchBox';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
+import styles from './Pages.module.css';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,12 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={styles.contactsContainer}>
       <DeleteModal />
       <ContactForm />
       <SearchBox />
       <ContactList />
-    </>
+    </div>
   );
 };
 

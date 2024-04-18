@@ -1,7 +1,8 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { FaUserLock } from 'react-icons/fa6';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 
@@ -21,17 +22,14 @@ const dataValidationSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  const usernameId = useId();
-  const phoneNumberId = useId();
-
   const dispatch = useDispatch();
   const addUser = (data, actions) => {
     dispatch(addContact({ ...data }));
     actions.resetForm();
   };
 
-  const [visibleSvg, setVisibleSvg] = useState(true);
-
+  const [userSvgColor, setUserSvgColor] = useState(true);
+  const [phoneSvgColor, setPhoneSvgColor] = useState(true);
   return (
     <Formik
       initialValues={{
@@ -41,47 +39,77 @@ const ContactForm = () => {
       onSubmit={addUser}
       validationSchema={dataValidationSchema}
     >
-      <Form className={styles.addContactForm}>
+      <Form style={{ marginBottom: 24 }}>
         <div className={styles.inputFieldContainer}>
-          <label htmlFor={usernameId}>Name</label>
-          <div className={styles.inputSvgContainer}>
+          <label
+            className={styles.inputLabel}
+            onFocus={() => {
+              setUserSvgColor(false);
+            }}
+            onMouseEnter={() => {
+              setUserSvgColor(false);
+            }}
+            onMouseLeave={() => {
+              setUserSvgColor(true);
+            }}
+            onBlur={() => {
+              setUserSvgColor(true);
+            }}
+          >
+            Name
             <Field
               type="text"
               name="name"
-              id={usernameId}
-              className={clsx(styles.inputField, styles.inputFieldAddition)}
-              onFocus={() => {
-                setVisibleSvg(prevState => !prevState);
-              }}
-              onBlur={() => {
-                setVisibleSvg(prevState => !prevState);
-              }}
-            />
-            <FaUserLock
-              className={clsx(styles.userLock, {
-                [styles.notVisible]: visibleSvg,
-              })}
+              className={styles.inputField}
+            ></Field>
+          </label>
+          <PersonIcon
+            className={clsx(styles.userLock, {
+              [styles.focusSvg]: userSvgColor,
+            })}
+          />
+
+          <div className={styles.erroField}>
+            <ErrorMessage
+              name="name"
+              render={msg => <span className={styles.formError}>{msg}</span>}
             />
           </div>
-          <ErrorMessage
-            name="name"
-            render={msg => <span className={styles.formError}>{msg}</span>}
-          />
         </div>
         <div className={styles.inputFieldContainer}>
-          <label htmlFor={phoneNumberId}>Number</label>
-          <Field
-            type="text"
-            name="number"
-            id={phoneNumberId}
-            className={styles.inputField}
+          <label
+            className={styles.inputLabel}
+            onFocus={() => {
+              setPhoneSvgColor(false);
+            }}
+            onMouseEnter={() => {
+              setPhoneSvgColor(false);
+            }}
+            onMouseLeave={() => {
+              setPhoneSvgColor(true);
+            }}
+            onBlur={() => {
+              setPhoneSvgColor(true);
+            }}
+          >
+            Number
+            <Field type="text" name="number" className={styles.inputField} />
+          </label>
+          <PhoneIcon
+            className={clsx(styles.userLock, {
+              [styles.focusSvg]: phoneSvgColor,
+            })}
           />
-          <ErrorMessage
-            name="number"
-            render={msg => <span className={styles.formError}>{msg}</span>}
-          />
+          <div className={styles.erroField}>
+            <ErrorMessage
+              name="number"
+              render={msg => <span className={styles.formError}>{msg}</span>}
+            />
+          </div>
         </div>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={styles.submitBtn}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );

@@ -31,7 +31,6 @@ export const addContact = createAsyncThunk(
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

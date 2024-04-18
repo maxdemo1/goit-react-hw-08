@@ -13,7 +13,7 @@ function summaryClass(LinkState) {
 const Navigation = () => {
   const isLoggedIn = useSelector(isLoggedInSelector);
   return (
-    <>
+    <nav className={styles}>
       <NavLink className={summaryClass} to="/">
         Home
       </NavLink>
@@ -22,7 +22,7 @@ const Navigation = () => {
           Contacts
         </NavLink>
       )}
-    </>
+    </nav>
   );
 };
 

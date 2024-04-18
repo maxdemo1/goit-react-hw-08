@@ -1,13 +1,13 @@
 .userItem {
-    border: 1px solid black;
-    min-width: 264px;
-    padding: 12px;
-    border-radius: 4px;
+    min-width: 300px;
+    padding: 8px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: calc((100% - 36px) / 4);
-    max-width: 264px;
+    max-width: 300px;
+    background-color: #3a3d40;
 }
 
 .nameContainer {
@@ -18,8 +18,28 @@
 .phoneContainer {
     display: flex;
     gap: 4px;
+    align-items: center;
 }
 
-.deleteButton {
-    padding: 4px 8px
+
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.buttonsContainer button {
+    background-color: inherit;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.buttonsContainer button:hover {
+    transform: scale(1.2);
+}
+
+.btnIcons {
+    color: #fff
 }

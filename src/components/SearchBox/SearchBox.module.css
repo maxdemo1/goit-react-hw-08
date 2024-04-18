@@ -10,9 +10,28 @@
 }
 
 .searchInput {
-    transition: outline-color 100ms ease-in-out;
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    min-width: 300px;
+    padding: 8px;
+    border-radius: 6px;
+    outline: none;
+    background-color: #3a3d40;
+    transition: background-color 0.2s ease-in-out;
+    color: #fff;
+    font-size: 16px;
+    border: none;
 }
 
+.searchInput:focus,
 .searchInput:focus {
-    outline-color: rgb(44, 128, 157);
+    background-color: aliceblue;
+    color: rgb(26, 31, 35);
+}
+
+.inputLabel {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
 }

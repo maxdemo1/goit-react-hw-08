@@ -32,10 +32,11 @@ const Toasts = () => {
         duration: 1200,
         id: 'deleteToast',
       });
-
+      console.log('here');
       return;
     }
   }, [deleteToast]);
+
   useEffect(() => {
     if (editToast) {
       toast.success('Contact edited', {
@@ -49,7 +50,17 @@ const Toasts = () => {
     }
   }, [editToast]);
 
-  return <Toaster />;
+  return (
+    <Toaster
+      toastOptions={{
+        style: {
+          backgroundColor: '#3a3d40',
+          fontSize: 14,
+          color: '#fff',
+        },
+      }}
+    />
+  );
 };
 
 export default Toasts;

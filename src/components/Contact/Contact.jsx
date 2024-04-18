@@ -1,7 +1,7 @@
-import { FaUser } from 'react-icons/fa';
-import { FaPhone } from 'react-icons/fa6';
-import Toasts from '../Toasts/Toasts';
-
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
 import styles from './Contact.module.css';
 import { useState } from 'react';
 import EditContact from '../EditContactForm/EditContact';
@@ -20,36 +20,37 @@ const Contact = ({ contactData }) => {
   };
   return (
     <>
-      <Toasts />
       <li className={styles.userItem}>
         <div>
           <div className={styles.nameContainer}>
-            <FaUser />
+            <PersonIcon />
             {!editContactFormState && <p>{contactData.name}</p>}
           </div>
           <div className={styles.phoneContainer}>
-            <FaPhone />
+            <PhoneIcon />
             {!editContactFormState && <p>{contactData.number}</p>}
           </div>
         </div>
+        <div className={styles.buttonsContainer}>
+          <button
+            type="button"
+            className={styles.deleteButton}
+            onClick={() => {
+              changeModalIsOpen();
+            }}
+          >
+            <CloseIcon className={styles.btnIcons} />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              ShowCloseEditForm();
+            }}
+          >
+            <EditIcon className={styles.btnIcons} />
+          </button>
+        </div>
 
-        <button
-          type="button"
-          className={styles.deleteButton}
-          onClick={() => {
-            changeModalIsOpen();
-          }}
-        >
-          Delete
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            ShowCloseEditForm();
-          }}
-        >
-          Edit
-        </button>
         {editContactFormState && (
           <EditContact
             prevUserData={contactData}

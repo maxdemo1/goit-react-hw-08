@@ -1,0 +1,36 @@
+.modal {
+    width: 300px;
+    background-color: #3a3d40;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 10px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+
+    padding: 6px;
+    border-radius: 8px;
+    border: none;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background-color: aliceblue;
+    color: rgb(26, 31, 35);
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: rgb(26, 31, 35);
+    color: aliceblue;
+}

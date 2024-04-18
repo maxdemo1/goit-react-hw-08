@@ -1,0 +1,20 @@
+.userMenu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logOutBtn {
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+}
+
+.logOutBtn:hover,
+.logOutBtn:focus {
+    font-weight: 500;
+    transform: scale(1.05);
+}

@@ -1,6 +1,11 @@
+.navMenu {
+    display: flex;
+    gap: 20px
+}
+
 .navLink {
+    padding: 10px;
     text-decoration: none;
-    color: black;
     font-weight: 600;
     transition: transform 200ms ease-in-out;
 }
@@ -10,5 +15,6 @@
 }
 
 .activeLink {
-    color: #9f0303;
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
