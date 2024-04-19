@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { isLoggedInSelector } from '../redux/auth/selectors';
-import EditContact2 from '../components/EditContact2/EditContact2';
 
 const HomePage = () => {
   const isLoggedIn = useSelector(isLoggedInSelector);
@@ -15,7 +14,6 @@ const HomePage = () => {
           Please register or log in😉
         </h4>
       )}
-      <EditContact2 />
     </div>
   );
 };

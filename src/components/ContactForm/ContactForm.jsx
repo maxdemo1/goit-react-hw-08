@@ -17,8 +17,8 @@ const dataValidationSchema = Yup.object().shape({
   number: Yup.string()
     .matches(/^\d+$/, 'Phone number is not valid')
     .required('Required')
-    .min(10, 'Too Short!')
-    .max(10, 'Too Long!'),
+    .min(6, 'Too Short!')
+    .max(12, 'Too Long!'),
 });
 
 const ContactForm = () => {

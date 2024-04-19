@@ -6,16 +6,35 @@ import {
   hotToastEditSelector,
 } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
+import {
+  isLoggedInSelector,
+  userNameSelector,
+} from '../../redux/auth/selectors';
 
 const Toasts = () => {
   const addToast = useSelector(hotToastAddSelector);
   const deleteToast = useSelector(hotToastDeleteSelector);
   const editToast = useSelector(hotToastEditSelector);
+  const loggedIn = useSelector(isLoggedInSelector);
+  const userName = useSelector(userNameSelector);
+
+  useEffect(() => {
+    if (loggedIn) {
+      toast.success(`Welcome ${userName}`, {
+        position: 'top-center',
+        reverseOrder: false,
+        duration: 1200,
+        id: 'addToast',
+      });
+
+      return;
+    }
+  }, [loggedIn, userName]);
 
   useEffect(() => {
     if (addToast) {
       toast.success('Contact added', {
-        position: 'top-right',
+        position: 'top-center',
         reverseOrder: false,
         duration: 1200,
         id: 'addToast',
@@ -27,7 +46,7 @@ const Toasts = () => {
   useEffect(() => {
     if (deleteToast) {
       toast.error('Contact deleted', {
-        position: 'top-right',
+        position: 'top-center',
         reverseOrder: false,
         duration: 1200,
         id: 'deleteToast',
@@ -40,7 +59,7 @@ const Toasts = () => {
   useEffect(() => {
     if (editToast) {
       toast.success('Contact edited', {
-        position: 'top-right',
+        position: 'top-center',
         reverseOrder: false,
         duration: 1200,
         id: 'editToast',

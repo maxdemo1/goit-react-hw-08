@@ -1,6 +1,7 @@
 .userItem {
     min-width: 300px;
     padding: 8px;
+    padding-right: 0;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -21,13 +22,17 @@
     align-items: center;
 }
 
-
+.deleteButton {
+    width: 60px;
+    height: 30px;
+    padding: 0;
+}
 
 .buttonsContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
 }
 
 .buttonsContainer button {

@@ -1,11 +1,11 @@
 import PersonIcon from '@mui/icons-material/Person';
 import PhoneIcon from '@mui/icons-material/Phone';
 import CloseIcon from '@mui/icons-material/Close';
-import EditIcon from '@mui/icons-material/Edit';
+
 import styles from './Contact.module.css';
 import { useState } from 'react';
-import EditContact from '../EditContactForm/EditContact';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import EditContact2 from '../EditContact2/EditContact2';
 
 const Contact = ({ contactData }) => {
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
@@ -13,22 +13,17 @@ const Contact = ({ contactData }) => {
     setDeleteModalIsOpen(prevState => !prevState);
   };
 
-  const [editContactFormState, setEditContactFormState] = useState(false);
-
-  const ShowCloseEditForm = () => {
-    setEditContactFormState(prevState => !prevState);
-  };
   return (
     <>
       <li className={styles.userItem}>
         <div>
           <div className={styles.nameContainer}>
             <PersonIcon />
-            {!editContactFormState && <p>{contactData.name}</p>}
+            {contactData.name}
           </div>
           <div className={styles.phoneContainer}>
             <PhoneIcon />
-            {!editContactFormState && <p>{contactData.number}</p>}
+            {contactData.number}
           </div>
         </div>
         <div className={styles.buttonsContainer}>
@@ -41,22 +36,8 @@ const Contact = ({ contactData }) => {
           >
             <CloseIcon className={styles.btnIcons} />
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              ShowCloseEditForm();
-            }}
-          >
-            <EditIcon className={styles.btnIcons} />
-          </button>
+          <EditContact2 userData={contactData} />
         </div>
-
-        {editContactFormState && (
-          <EditContact
-            prevUserData={contactData}
-            closeForm={ShowCloseEditForm}
-          />
-        )}
       </li>
       {deleteModalIsOpen && (
         <DeleteModal

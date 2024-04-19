@@ -31,7 +31,7 @@ const DeleteModal = ({ openState, id, modalClose }) => {
               dispatch(deleteContact(id));
             }}
           >
-            ✅Yes
+            Delete
           </button>
           <button
             className={styles.btn}
@@ -40,7 +40,7 @@ const DeleteModal = ({ openState, id, modalClose }) => {
               modalClose();
             }}
           >
-            ❌No
+            Cancel
           </button>
         </div>
       </ReactModal>

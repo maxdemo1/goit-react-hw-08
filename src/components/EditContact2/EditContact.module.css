@@ -1,0 +1,46 @@
+#editBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+#editBtn:hover,
+#editBtn:focus {
+    border: none;
+    background-color: transparent;
+}
+
+#editBtn svg {
+    color: white;
+    width: 20px;
+    height: 20px;
+}
+
+#editBtn span {
+    display: none;
+}
+
+.editForm {
+    background-color: #3a3d40;
+    color: #fff;
+}
+
+#formContent input,
+#formContent label,
+#formContent label:hover,
+#formContent label:focus {
+    color: #fff;
+    border-color: white;
+}
+
+.editForm #formContent .formInput div input::after {
+    border-color: white;
+}
+
+.editForm #formContent div::after {
+    border-color: #fff;
+}

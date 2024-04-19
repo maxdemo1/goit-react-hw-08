@@ -14,6 +14,7 @@ const INITIAL_STATE = {
     isHotToastDelete: false,
     isHotToastAdd: false,
     isHotToastEdit: false,
+    isHotToastIncorectData: false,
   },
 };
 

@@ -16,12 +16,12 @@
 
 .buttonContainer {
     display: flex;
-    gap: 12px;
+    gap: 30px;
 }
 
 .btn {
-
-    padding: 6px;
+    font-weight: 500;
+    padding: 10px 6px;
     border-radius: 8px;
     border: none;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
