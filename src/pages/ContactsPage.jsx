@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
 import styles from './Pages.module.css';
+import { Helmet } from 'react-helmet-async';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,9 @@ const ContactsPage = () => {
 
   return (
     <div className={styles.contactsContainer}>
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
       <DeleteModal />
       <ContactForm />
       <SearchBox />
