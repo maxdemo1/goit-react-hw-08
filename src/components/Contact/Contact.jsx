@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import styles from './Contact.module.css';
 import { useState } from 'react';
 import DeleteModal from '../DeleteModal/DeleteModal';
-import EditContact2 from '../EditContact2/EditContact2';
+import EditContact from '../EditContact/EditContact';
 
 const Contact = ({ contactData }) => {
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
@@ -36,7 +36,7 @@ const Contact = ({ contactData }) => {
           >
             <CloseIcon className={styles.btnIcons} />
           </button>
-          <EditContact2 userData={contactData} />
+          <EditContact userData={contactData} />
         </div>
       </li>
       {deleteModalIsOpen && (

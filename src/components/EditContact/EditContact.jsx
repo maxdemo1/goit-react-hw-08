@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { editContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 
-export default function EditContact2({ userData }) {
+export default function EditContact({ userData }) {
   const [open, setOpen] = useState(false);
 
   const [editUserData, setEditUserData] = useState(userData);
