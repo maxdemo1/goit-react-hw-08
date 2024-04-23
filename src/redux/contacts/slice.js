@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   addContact,
   deleteContact,
@@ -77,7 +77,7 @@ const contactsSlice = createSlice({
         state.contacts.loading = false;
         state.contacts.isHotToastEdit = true;
       })
-      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), state => {
+      .addCase(logout.fulfilled, state => {
         state.contacts.loading = false;
         state.contacts.error = false;
         state.contacts.items = [];
