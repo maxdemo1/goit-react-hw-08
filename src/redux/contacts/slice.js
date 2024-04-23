@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addContact,
   deleteContact,
   editContact,
   fetchContacts,
 } from './operations';
+import { logout } from '../auth/operations';
 
 const INITIAL_STATE = {
   contacts: {
@@ -38,11 +39,7 @@ const contactsErrorCase = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contactsSlice',
   initialState: INITIAL_STATE,
-  reducers: {
-    removeAllContacts(state, action) {
-      state.contacts.items = action.payload;
-    },
-  },
+
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, contactsPendingCase)
@@ -79,9 +76,13 @@ const contactsSlice = createSlice({
         state.contacts.items[targetIndex] = action.payload;
         state.contacts.loading = false;
         state.contacts.isHotToastEdit = true;
+      })
+      .addMatcher(isAnyOf(logout.fulfilled, logout.rejected), state => {
+        state.contacts.loading = false;
+        state.contacts.error = false;
+        state.contacts.items = [];
       });
   },
 });
 
-export const { removeAllContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

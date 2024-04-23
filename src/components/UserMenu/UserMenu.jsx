@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './UserMenu.module.css';
 import { logout } from '../../redux/auth/operations';
-import { removeAllContacts } from '../../redux/contacts/slice';
 import { userNameSelector } from '../../redux/auth/selectors';
 
 const UserMenu = () => {
@@ -16,7 +15,6 @@ const UserMenu = () => {
         className={styles.logOutBtn}
         type="button"
         onClick={() => {
-          dispatch(removeAllContacts([]));
           dispatch(logout());
         }}
       >
